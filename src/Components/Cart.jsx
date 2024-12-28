@@ -16,17 +16,18 @@ const Cart = () => {
   return (
     <>
     
-    <div className={`fixed top-0 right-0 bg-white h-full w-[100%] sm:w-[40%] lg:w-[30%] p-5 ${ activeCart ? "translate-x-0" : "translate-x-full"} z-20`}>
+    <div className={`fixed top-0 right-0 flex flex-col bg-white h-full w-[100%] sm:w-[40%] lg:w-[30%] p-5 ${ activeCart ? "translate-x-0" : "translate-x-full"} z-20`}>
        <div className="flex justify-between items-center mb-6">
         <h1 className="font-bold text-xl">My Orders</h1>
         <LuUtensilsCrossed  className="text-xl cursor-pointer hover:text-red-600"onClick={()=> setActiveCart(!activeCart)} />
        </div>
+       <div className=" flex-grow overflow-auto">
        {
         cartItems.length > 0 ?
           cartItems.map((item)=> <CartItem key={item.id} id={item.id} image={item.image} name={item.name} price={item.price} qty={item.qty}/>) : <h1 className="text-lg">Your cart is empty</h1>
        }
-       
-        <div className="absolute bottom-6 w-[90%]">
+       </div> 
+        <div className="w-[90%]">
             <h3>Items :{totalItems} </h3>
             <h3>Total Amount : {totalPrice}</h3>
             <hr className="w-[90%] my-3"/>

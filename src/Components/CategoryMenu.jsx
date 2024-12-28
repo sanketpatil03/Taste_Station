@@ -19,7 +19,11 @@ const CategoryMenu = () => {
         <div className="flex gap-4 overflow-auto">
             <button className={`bg-gray-200 px-5 py-2 rounded-lg font-semibold ${Category == "All" && "bg-green-500 text-white"} hover:bg-green-500 hover:text-white`} onClick={()=>dispatch(selectCategory("All"))}> All </button>
             {
-              category.map((category, index)=>   <button key={index} className={`bg-gray-200 px-5 py-2 rounded-lg font-semibold hover:bg-green-500 hover:text-white`} onClick={()=> dispatch(selectCategory(category))}> {category} </button> )
+              category.map((category, index)=>   <button key={index} className={`bg-gray-200 px-5 py-2 ${Category ===  category &&  "bg-green-500 text-white"} rounded-lg font-semibold  hover:bg-green-500 hover:text-white`} 
+              onClick={()=> 
+              {
+                dispatch(selectCategory(category));
+                }}> {category} </button> )
             }
         </div>
     </div>
